@@ -5,14 +5,23 @@ from dataclasses import dataclass
 from pygame import Vector2
 
 
-@dataclass(eq=False)
+@dataclass(eq=False, kw_only=True)
 class Entity:
     """Generic circular entity. Hashable."""
 
+    id_: int
     position: Vector2
-    velocity: Vector2 | None = None
-    radius: int = 0
+    velocity: Vector2
 
-    def __post_init__(self) -> None:
-        if self.velocity is None:
-            self.velocity = Vector2(0, 0)
+    acceleration: Vector2 | None = None
+    radius: float = 0
+
+    def __hash__(self) -> int:
+        return self.id_
+
+    def move(self, delta_time: float) -> None:
+        """Move the entity."""
+        if self.acceleration:
+            self.velocity += self.acceleration * delta_time
+
+        self.position += self.velocity * delta_time

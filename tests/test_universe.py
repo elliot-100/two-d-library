@@ -10,7 +10,7 @@ def test_create() -> None:
     """Test that `Universe` can be created, and initial state."""
     # arrange
     # act
-    u = Universe(Vector2(1, 1))
+    u = Universe(size=Vector2(1, 1))
     # assert
     assert u
     assert len(u.entities) == 0
@@ -19,9 +19,10 @@ def test_create() -> None:
 def test_add_entity() -> None:
     """Test that an `Entity` can be added to the `Universe`."""
     # arrange
-    u = Universe(Vector2(100, 100))
-    e = Entity(Vector2(0, 0))
+    u = Universe(size=Vector2(100, 100))
+    e = Entity(id_=1, position=Vector2(), velocity=Vector2())
     # act
     u.add_entity(e)
     # assert
     assert u.entities == {e}
+    assert e.id_ == 0
