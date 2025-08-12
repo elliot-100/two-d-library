@@ -14,3 +14,4 @@ def test_create() -> None:
     assert e.radius == 0
     assert e.position == Vector2(0, 0)
     assert e.velocity == Vector2(0, 0)
+    assert e.name == ""

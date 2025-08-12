@@ -15,6 +15,7 @@ class Entity:
 
     acceleration: Vector2 | None = None
     radius: float = 0
+    name: str = ""
 
     def __hash__(self) -> int:
         return self.id_
