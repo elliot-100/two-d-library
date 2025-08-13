@@ -20,9 +20,9 @@ class World:
         """Return whether `position` is within the world."""
         if self.centered_origin:
             magnitude = self.size / 2
-            return abs(position.x) < magnitude.x and abs(position.y) < magnitude.y
+            return abs(position.x) <= magnitude.x and abs(position.y) <= magnitude.y
 
-        return 0 <= position.x < self.size.x and 0 <= position.y < self.size.y
+        return 0 <= position.x <= self.size.x and 0 <= position.y <= self.size.y
 
     def random_position(self) -> Vector2:
         """Return a random position within the world."""
