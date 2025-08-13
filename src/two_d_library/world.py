@@ -16,6 +16,10 @@ class World:
     entities: set[Entity] = field(default_factory=set)
     centered_origin: bool = field(default=False)
 
+    def __str__(self) -> str:
+        """Human-readable description."""
+        return f"{type(self).__name__}(size={self.size})"
+
     def is_in_bounds(self, position: Vector2) -> bool:
         """Return whether `position` is within the world."""
         if self.centered_origin:
