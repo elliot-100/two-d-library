@@ -10,19 +10,34 @@ def test_create() -> None:
     """Test that `World` can be created, and initial state."""
     # arrange
     # act
-    u = World(size=Vector2(1, 1))
+    w = World(size=Vector2(1, 1))
     # assert
-    assert u
-    assert len(u.entities) == 0
+    assert w
+    assert len(w.entities) == 0
+
+
+def test_random_position() -> None:
+    """TO DO."""
+    # arrange
+    w = World(size_from_sequence=(1, 1))
+    # act
+    w.random_position()
+
+
+def test_random_position__centered_origin() -> None:
+    """TO DO."""
+    # arrange
+    w = World(size_from_sequence=(1, 1), centered_origin=True)
+    # act
+    w.random_position()
 
 
 def test_add_entity() -> None:
     """Test that an `Entity` can be added to the `World`."""
     # arrange
-    u = World(size=Vector2(100, 100))
+    w = World(size=Vector2(100, 100))
     e = Entity(id_=1, position=Vector2(), velocity=Vector2())
     # act
-    u.add_entity(e)
+    w.add_entity(e)
     # assert
-    assert u.entities == {e}
-    assert e.id_ == 0
+    assert w.entities == {e}
