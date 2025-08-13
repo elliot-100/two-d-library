@@ -1,7 +1,8 @@
 """Contains `World` class."""
 
 import random
-from dataclasses import dataclass, field
+from collections.abc import Sequence
+from dataclasses import InitVar, dataclass, field
 
 from pygame import Vector2
 
@@ -12,9 +13,14 @@ from two_d_library.entity import Entity
 class World:
     """Rectangular."""
 
-    size: Vector2
+    size_from_sequence: InitVar[tuple[int, int]]
+
+    size: Vector2 = field(init=False)
     entities: set[Entity] = field(default_factory=set)
     centered_origin: bool = field(default=False)
+
+    def __post_init__(self, size_from_sequence: Sequence[int]) -> None:
+        self.size = Vector2(size_from_sequence)
 
     def __str__(self) -> str:
         """Human-readable description."""
