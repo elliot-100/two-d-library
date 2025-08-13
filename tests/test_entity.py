@@ -11,6 +11,26 @@ def test_create() -> None:
     # act
     e = Entity(id_=1, position=Vector2(), velocity=Vector2())
     # assert
-    assert e.radius == 0
     assert e.position == Vector2(0, 0)
     assert e.velocity == Vector2(0, 0)
+    assert e.acceleration is None
+    assert e.radius == 0
+    assert e.name == ""
+
+
+def test_create_optional_fields() -> None:
+    """Test `Entity` can be created, and initial state differs from default."""
+    # arrange
+    # act
+    e = Entity(
+        id_=1,
+        position=Vector2(),
+        velocity=Vector2(),
+        acceleration=Vector2(1, 1),
+        radius=1,
+        name="test",
+    )
+    # assert
+    assert e.acceleration == Vector2(1, 1)
+    assert e.radius == 1
+    assert e.name == "test"

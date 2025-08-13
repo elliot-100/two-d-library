@@ -15,11 +15,12 @@ class Entity:
 
     acceleration: Vector2 | None = None
     radius: float = 0
+    name: str = ""
 
     def __hash__(self) -> int:
         return self.id_
 
-    def move(self, delta_time: float) -> None:
+    def move(self, delta_time: float = 1) -> None:
         """Move the entity."""
         if self.acceleration:
             self.velocity += self.acceleration * delta_time
