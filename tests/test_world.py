@@ -13,7 +13,21 @@ def test_create() -> None:
     w = World(size_from_sequence=(1, 1))
     # assert
     assert w
+    assert w.size == Vector2(1, 1)
+    assert not w.centered_origin
     assert len(w.entities) == 0
+    assert w.origin_offset == Vector2(0, 0)
+
+
+def test_create__optional_fields() -> None:
+    """Test that `World` can be created, and initial state."""
+    # arrange
+    # act
+    w = World(size_from_sequence=(1, 1), centered_origin=True)
+    # assert
+    assert w
+    assert w.centered_origin
+    assert w.origin_offset == Vector2(0.5, 0.5)
 
 
 def test_random_position() -> None:
