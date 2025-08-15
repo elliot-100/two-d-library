@@ -30,7 +30,7 @@ class World:
         """Human-readable description."""
         return f"{type(self).__name__}(size={self.size})"
 
-    def is_in_bounds(self, *, position: Vector2, offset: float = 0) -> bool:
+    def position_is_in_bounds(self, *, position: Vector2, offset: float = 0) -> bool:
         """Return whether `position` is within the world.
 
         -ve/+ve offset: offset in/out from edge.
