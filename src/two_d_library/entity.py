@@ -20,6 +20,19 @@ class Entity:
     def __hash__(self) -> int:
         return self.id_
 
+    @property
+    def heading(self) -> float:
+        """Return conventional heading from velocity.
+
+        +ve degrees clockwise from y-axis.
+        """
+        return (self.velocity.angle + 90) % 360
+
+    @property
+    def speed(self) -> float:
+        """Return speed from velocity."""
+        return self.velocity.magnitude()
+
     def move(self, delta_time: float = 1) -> None:
         """Move the entity."""
         if self.acceleration:
