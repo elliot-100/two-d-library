@@ -41,10 +41,9 @@ class World:
 
         -ve/+ve offset: offset in/out from edge.
         """
-        return (
-            -offset <= position.x <= self.size.x + offset + self.origin_offset.x
-            and -offset <= position.y <= self.size.y + offset + self.origin_offset.y
-        )
+        min_ = Vector2(0, 0) - self.origin_offset - Vector2(offset, offset)
+        max_ = self.size - self.origin_offset + Vector2(offset, offset)
+        return min_.x <= position.x <= max_.x and min_.y <= position.y <= max_.y
 
     def random_position(self) -> Vector2:
         """Return a uniformly distributed random position within the world."""
