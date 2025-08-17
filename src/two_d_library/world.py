@@ -1,12 +1,17 @@
 """Contains `World` class."""
 
+from __future__ import annotations
+
 import random
-from collections.abc import Sequence
 from dataclasses import InitVar, dataclass, field
+from typing import TYPE_CHECKING
 
 from pygame import Vector2
 
-from two_d_library.entity import Entity
+if TYPE_CHECKING:
+    from collections.abc import Sequence
+
+    from two_d_library.entity import Entity
 
 
 @dataclass(kw_only=True)
