@@ -16,6 +16,26 @@ def test_create() -> None:
     assert e.acceleration is None
     assert e.radius == 0
     assert e.name == ""
+    assert (
+        repr(e) == "Entity("
+        "id_=1, "
+        "position=Vector2(0, 0), "
+        "velocity=Vector2(0, 0), "
+        "acceleration=None, "
+        "radius=0, "
+        "name=''"
+        ")"
+    )
+    assert (
+        str(e) == "Entity("
+        "id_=1, "
+        "position=Vector2(0, 0), "
+        "velocity=Vector2(0, 0), "
+        "acceleration=None, "
+        "radius=0, "
+        "name=''"
+        ")"
+    )
 
 
 def test_create_optional_fields() -> None:
@@ -34,3 +54,20 @@ def test_create_optional_fields() -> None:
     assert e.acceleration == Vector2(1, 1)
     assert e.radius == 1
     assert e.name == "test"
+    assert (
+        repr(e) == "Entity("
+        "id_=1, "
+        "position=Vector2(0, 0), "
+        "velocity=Vector2(0, 0), "
+        "acceleration=Vector2(1, 1), "
+        "radius=1, "
+        "name='test')"
+    )
+    assert (
+        str(e) == "Entity(id_=1, "
+        "position=Vector2(0, 0), "
+        "velocity=Vector2(0, 0), "
+        "acceleration=Vector2(1, 1), "
+        "radius=1, "
+        "name='test')"
+    )
