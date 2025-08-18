@@ -17,6 +17,8 @@ def test_create() -> None:
     assert not w.centered_origin
     assert len(w.entities) == 0
     assert w.origin_offset == Vector2(0, 0)
+    assert repr(w) == "World(centered_origin=False, size=Vector2(1, 1), entities=set())"
+    assert str(w) == "World(size=[1, 1], origin_offset=[0, 0])"
 
 
 def test_create__optional_fields() -> None:
@@ -28,6 +30,8 @@ def test_create__optional_fields() -> None:
     assert w
     assert w.centered_origin
     assert w.origin_offset == Vector2(0.5, 0.5)
+    assert repr(w) == "World(centered_origin=True, size=Vector2(1, 1), entities=set())"
+    assert str(w) == "World(size=[1, 1], origin_offset=[0.5, 0.5])"
 
 
 def test_random_position() -> None:

@@ -1,8 +1,12 @@
 """Contains `Entity` class."""
 
-from dataclasses import dataclass
+from __future__ import annotations
 
-from pygame import Vector2
+from dataclasses import dataclass
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pygame import Vector2
 
 
 @dataclass(eq=False, kw_only=True)
