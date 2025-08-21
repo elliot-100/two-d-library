@@ -26,7 +26,7 @@ class World:
     def __init__(
         self,
         *,
-        size_from_sequence: Sequence[int],
+        size_from_sequence: Sequence[float],
         centered_origin: bool = False,
     ) -> None:
         """Initialize a `World`."""
