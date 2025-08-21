@@ -43,3 +43,7 @@ class Entity:
             self.velocity += self.acceleration * delta_time
 
         self.position += self.velocity * delta_time
+
+    def update(self, delta_time: float = 1) -> None:
+        """Update the entity."""
+        self.move(delta_time)

@@ -21,6 +21,7 @@ class World:
     size: Vector2
     entities: set[Entity]
     centered_origin: bool = False
+    step_counter: int
 
     def __init__(
         self,
@@ -32,6 +33,7 @@ class World:
         self.size = Vector2(size_from_sequence)
         self.centered_origin = centered_origin
         self.entities: set[Entity] = set()
+        self.step_counter = 0
 
     @property
     def origin_offset(self) -> Vector2:
@@ -86,3 +88,10 @@ class World:
         """Add `entity` to the world."""
         entity.id_ = len(self.entities)
         self.entities.add(entity)
+
+    def update(self, delta_time: float = 1) -> None:
+        """Update the world."""
+        for entity in self.entities:
+            entity.update(delta_time)
+
+        self.step_counter += 1
