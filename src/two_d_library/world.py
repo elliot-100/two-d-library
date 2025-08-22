@@ -89,7 +89,7 @@ class World:
         entity.id_ = len(self.entities)
         self.entities.add(entity)
 
-    def update(self, delta_time: float = 1) -> None:
+    def update(self, delta_time: float) -> None:
         """Update the world."""
         for entity in self.entities:
             entity.update(delta_time)
